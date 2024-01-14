@@ -15,8 +15,8 @@ class user_add {
             $user_id = $_POST["ID"];
             $description = $_POST["description"];
     
-            $tempDirectory = "../avatar/tmp/";
-            $mainDirectory = "../avatar/";
+            $tempDirectory = "avatar/tmp/";
+            $mainDirectory = "avatar/";
     
             if (!file_exists($mainDirectory)) {
                 mkdir($mainDirectory, 0777, true);
@@ -45,8 +45,8 @@ class user_add {
         session_start();
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
     
-            $tempDirectory = "../avatar/tmp/";
-            $mainDirectory = "../avatar/";
+            $tempDirectory = "avatar/tmp/";
+            $mainDirectory = "avatar/";
     
             if (!file_exists($mainDirectory)) {
                 mkdir($mainDirectory, 0777, true);
@@ -54,7 +54,7 @@ class user_add {
             $fileName = basename($_SESSION["target_file"]);
             $tempFilePath = $tempDirectory . $fileName;
             $mainFilePath = $mainDirectory . $_SESSION["user_id"] . "/" . $fileName;
-            $displayMainFilePath = '../avatar/' . $_SESSION["user_id"] . "/" . $fileName;
+            $displayMainFilePath = 'avatar/' . $_SESSION["user_id"] . "/" . $fileName;
             mkdir($mainDirectory . $_SESSION["user_id"], 0777, true);
             rename($tempFilePath, $mainFilePath);
             $files = scandir($tempDirectory);
@@ -101,7 +101,7 @@ class user_add {
 
             if ($_FILES["image"]["error"] == 0) {
                 $tempFilePath = $tempDirectory . $_FILES["image"]["name"];
-                $displayMainFilePath = '../avatar/tmp' . $user_id . "/" . $_FILES["image"]["name"];
+                $displayMainFilePath = './avatar/tmp' . $user_id . "/" . $_FILES["image"]["name"];
                 move_uploaded_file($_FILES["image"]["tmp_name"], $tempFilePath);
                 $_SESSION["username"] = $username;
                 $_SESSION["selected_type"] = $selected_type;
@@ -153,16 +153,16 @@ class user_add {
             $description = $_POST["description"];
     
             // Xác định thư mục tạm thời và thư mục chính
-            $tempDirectory = "../avatar/tmp/";
-            $mainDirectory = "../avatar/";
-    
+            $tempDirectory = "avatar/tmp/";
+            $mainDirectory = "avatar/";
+            echo $mainDirectory;
             if (!file_exists($mainDirectory)) {
                 mkdir($mainDirectory, 0777, true);
             }
 
             if ($_FILES["image"]["error"] == 0) {
                 $tempFilePath = $tempDirectory . $_FILES["image"]["name"];
-                $displayMainFilePath = '../avatar/tmp' . "/" . $_FILES["image"]["name"];
+                $displayMainFilePath = 'avatar/tmp' . "/" . $_FILES["image"]["name"];
                 move_uploaded_file($_FILES["image"]["tmp_name"], $tempFilePath);
                 $_SESSION["username"] = $username;
                 $_SESSION["selected_type"] = $selected_type;
@@ -199,16 +199,18 @@ class user_add {
     
     public function confirm_edit_user() {
         session_start();
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
-            $tempDirectory = "../avatar/tmp/";
-            $mainDirectory = "../avatar/";
+        if ($_SERVER["REQUEST_METHOD"] == "POST" &&isset($_POST["confirm"])) {
+            $tempDirectory = "../../avatar/tmp/";
+            $mainDirectory = "../../avatar/";
             $fileName = basename($_SESSION["target_file"]);
             $tempFilePath = $tempDirectory . $fileName;
             $mainFilePath = $mainDirectory . $_SESSION["user_id"] . "/" . $fileName;
-            $displayMainFilePath = 'avatar/' . $_SESSION["user_id"] . "/" . $fileName;
+            echo $mainFilePath;
+            $displayMainFilePath = '../../avatar/' . $_SESSION["user_id"] . "/" . $fileName;
             rename($tempFilePath, $mainFilePath);
-            echo $_SESSION["old_file"];
+
             $oldFilePath = '/WEB' . $_SESSION["old_file"];
+            echo $oldFilePath;
             unlink($oldFilePath);
             $files = scandir($tempDirectory);
             foreach ($files as $file) {
@@ -232,13 +234,13 @@ class user_add {
         }
     }
     public function back_user_edit_input(){
-        session_start();
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edit"])) {
-            $username = $_POST["user_name"];
-            $selected_type = $_POST['type'][0];
-            if ($selected_type == 1) {
-                $user_type = 'Giáo viên';
-            } elseif ($selected_type == 2) {
+            session_start();
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edit"])) {
+                $username = $_POST["user_name"];
+                $selected_type = $_POST['type'][0];
+                if ($selected_type == 1) {
+                    $user_type = 'Giáo viên';
+                } elseif ($selected_type == 2) {
                 $user_type = 'Sinh viên';
             }
             $user_id = $_POST["ID"];
@@ -254,7 +256,7 @@ class user_add {
 
             if ($_FILES["image"]["error"] == 0) {
                 $tempFilePath = $tempDirectory . $_FILES["image"]["name"];
-                $displayMainFilePath = '/manage-library/avatar/tmp' . "/" . $_FILES["image"]["name"];
+                $displayMainFilePath = '../avatar/tmp' . "/" . $_FILES["image"]["name"];
                 move_uploaded_file($_FILES["image"]["tmp_name"], $tempFilePath);
                 $_SESSION["username"] = $username;
                 $_SESSION["selected_type"] = $selected_type;
@@ -290,7 +292,7 @@ if (basename($_SERVER['PHP_SELF']) === 'back_user_add_input.php') {
 if (basename($_SERVER['PHP_SELF']) === 'user_add_confirm.php') {
     $user_controller->confirm_add_user();
 } 
-if (strpos($_SERVER['REQUEST_URI'], '/user_edit_input.php/') !== false) {
+if (strpos($_SERVER['REQUEST_URI'], 'user_edit_input.php') !== false) {
     $user_controller->edit_user();
 }
 if (basename($_SERVER['PHP_SELF']) === 'back_user_edit_input.php') {

@@ -1,9 +1,9 @@
 <?php
 // Kết nối tới cơ sở dữ liệu MySQL
 $servername = "localhost";
-$username = "your_username";
-$password = "your_password";
-$database = "your_database";
+$username = "root";
+$password = "";
+$database = "library";
 $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
     die("Kết nối đến cơ sở dữ liệu thất bại: " . mysqli_connect_error());
@@ -45,6 +45,4 @@ if (mysqli_num_rows($result) > 0) {
     echo "Không tìm thấy kết quả.";
 }
 
-// Đóng kết nối tới cơ sở dữ liệu
-mysqli_close($conn);
 ?>

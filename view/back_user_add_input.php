@@ -1,6 +1,6 @@
 <?php
-        include '/WEB/manage-library/controller/user_add_edit.php';
-        include '/WEB/manage-library/header.php'; 
+        include '../controller/user_add_edit.php';
+        include '../view/header.php';
 ?>
         
         <body>

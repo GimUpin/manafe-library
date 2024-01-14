@@ -22,7 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (UserModel::login($username, $password)) {
-        $_SESSION['login_id'] = $username;
+        $cookie_name = "login_id";
+        $cookie_value = "$username";
+        setcookie($cookie_name, $cookie_value, time() + (3600 * 30), "/");
         header("Location: ../view/home.php");
     } else {
         $errors[] = "loginid và password không đúng.";

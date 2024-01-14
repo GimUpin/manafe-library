@@ -2,11 +2,11 @@
 session_start();
 
 // Kiểm tra nếu người dùng chưa đăng nhập, chuyển hướng tới trang index.php
-if(!isset($_SESSION['login_id'])) {
+if(!isset($_COOKIE["login_id"])) {
     header("Location: index.php");
     exit();
 }
-$login_name = $_SESSION['login_id'];
+$login_name = $_COOKIE["login_id"];
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $login_time = date("Y-m-d H:i");
 
@@ -84,6 +84,7 @@ $login_time = date("Y-m-d H:i");
             <div class="link-button">
                 <a href="search_user.php">Tìm kiếm</a>
                 <a href="user_add_input.php">Thêm mới</a>
+                <a href="User_LichSuMuon.php">Lịch sử mượn</a>
             </div>
         </div>
 
@@ -92,6 +93,7 @@ $login_time = date("Y-m-d H:i");
             <div class="link-button">
                 <a href="book_list.php">Tìm kiếm </a>
                 <a href="book_register.php">Thêm mới</a>
+                <a href="AdvancedSearchView.php">Sổ cái mượn trả sách</a>
             </div>
         </div>
 

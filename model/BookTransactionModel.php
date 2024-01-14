@@ -17,7 +17,7 @@ class BookTransactionModel {
             JOIN users ON book_transactions.user_id = users.id
             JOIN books ON book_transactions.book_id = books.id
         WHERE 1"; // Always true condition to start the WHERE clause
-        
+
     $params = array();
 
     if ($bookId !== null) {
@@ -31,7 +31,6 @@ class BookTransactionModel {
     }
 
     $query .= " GROUP BY users.id";
-
     $stmt = $pdo->prepare($query);
     $stmt->execute($params);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +41,7 @@ class BookTransactionModel {
             $time_borrowed_plan = explode(',', $result['return_plan_datetime']);
             $time_book_return = explode(',', $result['return_actual_datetime']);
             $book_names = explode(',', $result['book_name']);
-            
+            echo 1;
             $records = array();
             for ($i = 0; $i < count($time_borrowed); $i++) {
                 $record = array(
@@ -56,9 +55,10 @@ class BookTransactionModel {
                 );
                 $records[] = $record;
             }
-    
+
             $result['history'] = $records;
             $history[] = $result;
+
         }
 
         return $history;
@@ -80,7 +80,7 @@ class BookTransactionModel {
             JOIN users ON book_transactions.user_id = users.id
             JOIN books ON book_transactions.book_id = books.id
         WHERE 1"; // Always true condition to start the WHERE clause
-        
+
     $params = array();
 
     if ($bookId !== null) {
@@ -105,7 +105,7 @@ class BookTransactionModel {
             $time_borrowed_plan = explode(',', $result['return_plan_datetime']);
             $time_book_return = explode(',', $result['return_actual_datetime']);
             $user_names = explode(',', $result['user_name']);
-            
+
             $records = array();
             for ($i = 0; $i < count($time_borrowed); $i++) {
                 $record = array(
@@ -119,8 +119,8 @@ class BookTransactionModel {
                 );
                 $records[] = $record;
             }
-            
-    
+
+
             $result['history'] = $records;
             $history[] = $result;
         }

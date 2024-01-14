@@ -23,7 +23,7 @@ function searchBooks(event) {
 
     // Thực hiện AJAX để gửi yêu cầu tìm kiếm và xử lý kết quả ở đây
     $.ajax({
-        url: '../controller/search1.php', // Đường dẫn đến file xử lý tìm kiếm
+        url: '../controller/book_search.php', // Đường dẫn đến file xử lý tìm kiếm
         method: 'POST',
         data: {
             category: category,
@@ -56,7 +56,7 @@ $(document).on('click', '.deleteButton', function() {
     if (confirm('Bạn chắc chắn muốn xóa quyển sách này?')) {
         // Gửi yêu cầu xóa bản ghi tới server
         $.ajax({
-            url: '../controller/delete1.php', // Đường dẫn đến file xử lý xóa
+            url: '../controller/book_delete.php', // Đường dẫn đến file xử lý xóa
             method: 'POST',
             data: {
                 name: name
@@ -75,7 +75,7 @@ $(document).on('click', '.editButton', function() {
     var id = row.find('td:eq(1)').text();
 
     // Chuyển đến trang edit.php với tham số name
-    window.location.href = '../view/book_update.php?id=' + encodeURIComponent(id);
+    window.location.href = '../view/book_edit.php?id=' + encodeURIComponent(id);
 });
 
 //Edit function
@@ -89,7 +89,7 @@ function updateItem() {
         formData.append('image', fileInput.files[0]);
     }
     $.ajax({
-        url: "../controller/update.php",
+        url: "../controller/book_edit.php",
         type: "POST",
         data: formData,
         processData: false,
@@ -106,7 +106,7 @@ function updateItem() {
 
 function displayEditItem(id) {
     $.ajax({
-        url: "../controller/get.php",
+        url: "../controller/book_get.php",
         type: "POST",
         data: {
             id: id

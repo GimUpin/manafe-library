@@ -31,7 +31,7 @@ include '../view/header.php'?>
                             <th scope='row'>Avatar</th>
                             <td>
                             <div class='avatar_container'>
-                              <img src='$target_file' class='img-fluid rounded border' alt='avatar'>
+                              <img src='../../$target_file' class='img-fluid rounded border' alt='avatar'>
                             </div>
                           </td>
                         </tr>
