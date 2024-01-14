@@ -1,12 +1,12 @@
 <?php 
-include '/WEB/manage-library/header.php'?>
+include '../view/header.php'?>
 
 <body>
     <div class="container mt-5">
         <form method="POST" enctype="multipart/form-data">
             <?php
-            include_once '/WEB/manage-library/controller/user_add_edit.php';           
-            include_once '/WEB/manage-library/model/UserModel.php';
+            include_once '../controller/user_add_edit.php';
+            include_once '../model/UserModel.php';
             $username = $_SESSION["username"];
             $user_type = $_SESSION["user_type"];
             $user_id = $_SESSION["user_id"];

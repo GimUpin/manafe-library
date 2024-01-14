@@ -54,7 +54,7 @@ class user_add {
             $fileName = basename($_SESSION["target_file"]);
             $tempFilePath = $tempDirectory . $fileName;
             $mainFilePath = $mainDirectory . $_SESSION["user_id"] . "/" . $fileName;
-            $displayMainFilePath = '/manage-library/avatar/' . $_SESSION["user_id"] . "/" . $fileName;
+            $displayMainFilePath = '../avatar/' . $_SESSION["user_id"] . "/" . $fileName;
             mkdir($mainDirectory . $_SESSION["user_id"], 0777, true);
             rename($tempFilePath, $mainFilePath);
             $files = scandir($tempDirectory);
@@ -101,7 +101,7 @@ class user_add {
 
             if ($_FILES["image"]["error"] == 0) {
                 $tempFilePath = $tempDirectory . $_FILES["image"]["name"];
-                $displayMainFilePath = '/manage-library/avatar/tmp' . $user_id . "/" . $_FILES["image"]["name"];
+                $displayMainFilePath = '../avatar/tmp' . $user_id . "/" . $_FILES["image"]["name"];
                 move_uploaded_file($_FILES["image"]["tmp_name"], $tempFilePath);
                 $_SESSION["username"] = $username;
                 $_SESSION["selected_type"] = $selected_type;
@@ -133,12 +133,12 @@ class user_add {
         session_start();
         $current_path = $_SERVER['REQUEST_URI'];
         $path_parts = explode('/', $current_path);
-        $sub_id = end($path_parts);
+        $user_id = end($path_parts);
         $user_model = new UserModel();
-        $user_data = $user_model->get_user($sub_id);
+        $user_data = $user_model->get_user($user_id);
         $_SESSION["username"] = $user_data['name'];;
         $_SESSION["selected_type"] = $user_data['type'];
-        $_SESSION["user_id"] = $user_data['sub_id'];
+        $_SESSION["user_id"] = $user_data['user_id'];
         $_SESSION["description"] = $user_data['description'];
         $_SESSION["target_file"] = $user_data['avatar'];
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edit"])) {
@@ -162,7 +162,7 @@ class user_add {
 
             if ($_FILES["image"]["error"] == 0) {
                 $tempFilePath = $tempDirectory . $_FILES["image"]["name"];
-                $displayMainFilePath = '/manage-library/avatar/tmp' . "/" . $_FILES["image"]["name"];
+                $displayMainFilePath = '../avatar/tmp' . "/" . $_FILES["image"]["name"];
                 move_uploaded_file($_FILES["image"]["tmp_name"], $tempFilePath);
                 $_SESSION["username"] = $username;
                 $_SESSION["selected_type"] = $selected_type;
@@ -205,8 +205,9 @@ class user_add {
             $fileName = basename($_SESSION["target_file"]);
             $tempFilePath = $tempDirectory . $fileName;
             $mainFilePath = $mainDirectory . $_SESSION["user_id"] . "/" . $fileName;
-            $displayMainFilePath = '/manage-library/avatar/' . $_SESSION["user_id"] . "/" . $fileName;
+            $displayMainFilePath = 'avatar/' . $_SESSION["user_id"] . "/" . $fileName;
             rename($tempFilePath, $mainFilePath);
+            echo $_SESSION["old_file"];
             $oldFilePath = '/WEB' . $_SESSION["old_file"];
             unlink($oldFilePath);
             $files = scandir($tempDirectory);

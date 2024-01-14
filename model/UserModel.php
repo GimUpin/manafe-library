@@ -136,7 +136,7 @@ class UserModel {
     public function get_user($user_id) {
         $conn = new mysqli("localhost", "root", "", "library");
 
-        include('../../connection.php');
+        include('../connection.php');
         $stmt = $conn->prepare("SELECT `id`, `type`, `name`, `user_id`, `avatar`, `description`, `updated`, `created` FROM users WHERE `user_id` = ?");
 
         $stmt->bind_param("s", $user_id);

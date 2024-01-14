@@ -119,7 +119,7 @@
 			const keyword = $('#input-keyword').val()
 			const type = $('#select-type').val()
 						
-			$.get( "/manage-library/controller/user/ajax_search_user.php", { keyword: keyword, type: type } )
+			$.get( "../controller/user/ajax_search_user.php", { keyword: keyword, type: type } )
 			  .done(function(r) {
 				  if(r){
 					const resp = JSON.parse(r);
@@ -130,7 +130,7 @@
 							var html = myTmpl.render({
 								i : index + 1,
 								id : e.id,
-								sub_id : e.sub_id,
+								sub_id : e.user_id,
 								name : e.name,
 								type : e.type,
 								description:e.description
@@ -155,7 +155,7 @@
 				
 				$.ajax({
 				  method: "GET",
-				  url: "/manage-library/controller/user/ajax_delete_user.php",
+				  url: "../controller/user/ajax_delete_user.php",
 				  data: {id:id}
 				})
 				  .done(function( msg ) {
