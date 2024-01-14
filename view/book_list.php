@@ -13,7 +13,6 @@
             <select  name="inputCategory" id="inputCategory" class="entering" required>
                 <?php
                 $category = array(
-                    "",
                     "Tất cả",
                     "Khoa học",
                     "Tiểu thuyết",
@@ -35,6 +34,7 @@
 
         <form>
             <button type="button" class="button-container" id="nonsubmitButton" onclick="searchBooks()"> Tìm kiếm </button>
+            <button type="button" class="back-button" id="backButton" onclick="window.location.href='home.php'"> Về trang chủ</button>
         </form>
 
         <p class="title">Số quyển sách tìm thấy : </p>

@@ -13,7 +13,7 @@ echo '</style>';
 
     <div class="validate">
     </div>
-    <form id="updateForm" action="update_confirm.php" method="post" enctype="multipart/form-data">
+    <form id="updateForm" action="book_update_confirm.php" method="post" enctype="multipart/form-data">
         <?php
         $id = $_GET['id'];
         echo "<input type='text' name='id' id='id' class='d-none' value='$id'>";

@@ -13,7 +13,7 @@
         }
         $avatarFile = $_FILES["avatar"]["name"];
         $avatarTemp = $_FILES["avatar"]["tmp_name"];
-        $targetFile =__DIR__ . '/avatar/' . $avatarFile;
+        $targetFile = __DIR__ . '/avatar/' . $avatarFile;
         $uploadOk = 1;
         $avatarFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         if ($avatarTemp !== null) {
@@ -112,7 +112,7 @@
                                 text: "Bạn đã đăng ký thành công sách!",
                                 confirmButtonText: "Quay lại trang chủ"
                             }).then(function() {
-                                window.location.href = "../view/home.php";
+                                window.location.href = "home.php";
                             });';
                         echo '</script>';
                     } else {

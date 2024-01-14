@@ -41,7 +41,6 @@ class BookTransactionModel {
             $time_borrowed_plan = explode(',', $result['return_plan_datetime']);
             $time_book_return = explode(',', $result['return_actual_datetime']);
             $book_names = explode(',', $result['book_name']);
-            echo 1;
             $records = array();
             for ($i = 0; $i < count($time_borrowed); $i++) {
                 $record = array(

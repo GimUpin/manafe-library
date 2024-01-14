@@ -75,7 +75,7 @@ $(document).on('click', '.editButton', function() {
     var id = row.find('td:eq(1)').text();
 
     // Chuyển đến trang edit.php với tham số name
-    window.location.href = '../view/book_edit.php?id=' + encodeURIComponent(id);
+    window.location.href = '../view/book_update.php?id=' + encodeURIComponent(id);
 });
 
 //Edit function

@@ -43,6 +43,14 @@ form {
     cursor: pointer ;
 
 }
+
+.back-button {
+    color: rgb(255, 255, 255);
+    cursor: pointer ;
+    background-color: #e2ca16;
+
+}
+
 .deleteButton {
     background-color: red; 
 }
@@ -60,6 +68,18 @@ form {
     background-color: #4F81BD;
     border: 3px solid #41719C;
 }
+
+#backButton{
+    width: 120px;
+    height: 38px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-left: 8px;
+    border-radius: 5px;
+    background-color: #d8430d;
+    border: 3px solid #41719C;
+}
+
 #resetButton{
     width: 120px;
     height: 38px;
