@@ -1,9 +1,11 @@
+<head>
+    <link href='..\..\web\css\style1.css\\' rel="stylesheet">
+</head>
+
 <?php
 include '../view/header.php';
-echo '<style>';
-include '../view/style1.css'; // Include nội dung của file CSS
-echo '</style>';
 ?>
+
 <div class="container p-5">
     <div class="text-center">
         <h4>
@@ -78,7 +80,7 @@ echo '</style>';
     </div>
 </div>
 
-<script src="../booklist_handle.js"></script>
+<script src="../../web/booklist_handle.js"></script>
 <script>
     function validateImage(field, message) {
         // Kiểm tra xem trường ảnh có giá trị không

@@ -1,5 +1,5 @@
 <?php
-include('../connection.php');
+include('../common/connection.php');
 class BookModel {
     public static function getAllBooks() {
         // Giả sử $pdo là đối tượng PDO kết nối đến cơ sở dữ liệu

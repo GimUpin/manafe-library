@@ -1,21 +1,24 @@
-
+<head>
+    <link href="../../css/style1.css" rel="stylesheet">
+</head>
 <?php
 
     include '../view/header.php';
-    echo '<style>';
-        include '../view/style1.css'; // Include nội dung của file CSS
-    echo '</style>';
     session_start();
     // Upload ảnh 
     if (isset($_FILES["avatar"])) {
         $folderPath = '..\..\web\avatar\tmp\\';
-        // if (!file_exists($folderPath)) {
+        // $distFolder = '..\..\web\avatar\avatar_book\\';
+        // // if (!file_exists($folderPath)) {
         //     mkdir($folderPath, 0777, true);
         // }
         $avatarFile = $_FILES["avatar"]["name"];
         $avatarTemp = $_FILES["avatar"]["tmp_name"];
-        echo $avatarFile;
+      
         $targetFile = '..\..\web\avatar\tmp\\' . $avatarFile ;
+        echo $avatarFile;
+
+       
         $uploadOk = 1;
         $avatarFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
         if ($avatarTemp !== null) {
@@ -42,6 +45,8 @@
         if ($uploadOk == 1) {
             if (isset($_FILES["avatar"]) && $_FILES["avatar"]["error"] == 0) {
                 move_uploaded_file($avatarTemp, $targetFile);
+                // unlink($avatarTemp);
+                
             }
         }
         $_SESSION["targetFile"] = $targetFile;
@@ -187,7 +192,8 @@
                 <span class='col-sm-2 col-form-label' style='height:30%'>Hình ảnh</span>
                 <div class='col-sm-5'>
                     <?php
-                    echo "<img src='../../web/avatar/tmp/$avatarFile' alt='Uploaded Image' class='img-fluid'>";
+                    echo "<img src='..\..\web\avatar\tmp\\$avatarFile' alt='Uploaded Image' class='img-fluid'>";
+                    echo $avatarFile;
                     echo "<input type='hidden' name='avatar' value='$avatarFile'>" 
                     ?>
                 </div>
@@ -199,7 +205,7 @@
             </form>
     </div>
     
-    <script src="../booklist_handle.js"></script>
+    <script src="../../web/booklist_handle.js"></script>
     <script>
         function ReturnClick(){
             history.back();

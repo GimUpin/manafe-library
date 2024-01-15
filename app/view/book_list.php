@@ -1,9 +1,10 @@
 
+<head>
+    <link href='..\..\web\css\style3.css\\' rel="stylesheet">
+</head>
+
 <?php 
     include '../view/header.php';
-    echo '<style>';
-        include '../view/style3.css'; // Include nội dung của file CSS
-    echo '</style>';
     ?>
 
 <body>
@@ -56,7 +57,7 @@
                     ini_set('display_errors', 1);
                     ini_set('display_startup_errors', 1);
                     error_reporting(E_ALL);
-                    include '../connection.php';
+                    include '../common/connection.php';
                     // Kiểm tra xem đã nhận yêu cầu tìm kiếm chưa
                     $conn->close();
                     ?>
@@ -65,7 +66,7 @@
         </div>
     </div>
 
-    <script src="../booklist_handle.js"></script>
+    <script src="../../web/booklist_handle.js"></script>
 </body>
 
 </html>

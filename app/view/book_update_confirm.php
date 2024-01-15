@@ -1,8 +1,9 @@
+<head>
+    <link href='..\..\web\css\style1.css\\' rel="stylesheet">
+</head>
+
 <?php
     include '../view/header.php';
-    echo '<style>';
-        include '../view/style1.css'; // Include nội dung của file CSS
-    echo '</style>';
     session_start();
 
     $avatarFile = ""; // Initialize $avatarFile
@@ -57,7 +58,7 @@
             </h4>
         </div>
         <?php
-        include '../connection.php';
+        include '../common/connection.php';
         mysqli_query($conn, "USE library");
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -174,7 +175,7 @@
         </form>
     </div>
     
-    <script src="../booklist_handle.js"></script>
+    <script src="../../web/booklist_handle.js"></script>
     <script>
         function ReturnClick(){
             history.back();

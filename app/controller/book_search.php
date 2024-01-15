@@ -1,6 +1,6 @@
 <?php
 // Kết nối đến cơ sở dữ liệu
-include '../connection.php';
+include '../common/connection.php';
 
 // Lấy dữ liệu từ AJAX request
 $category = $_POST['category'];

@@ -1,5 +1,5 @@
 <?php
-include '../connection.php';
+include '../common/connection.php';
 mysqli_query($conn, "USE library");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

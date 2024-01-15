@@ -1,6 +1,6 @@
 <?php
 // book_delete.php
-include '../connection.php';
+include '../common/connection.php';
 // Check if the request contains the book name
 if (isset($_POST['name'])) {
     $name = $_POST['name'];
